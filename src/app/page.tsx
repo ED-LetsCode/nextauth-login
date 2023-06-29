@@ -1,5 +1,11 @@
-import Image from "next/image";
+import Login from "@/components/Login";
 
-export default function Home() {
-  return <div>Hey</div>;
-}
+const Page = () => {
+  return (
+    <div className="h-[80vh] flex justify-center items-center">
+      <Login />
+    </div>
+  );
+};
+
+export default Page;
