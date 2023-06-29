@@ -1,8 +1,9 @@
-import { LucideProps, MessageSquare, User } from "lucide-react";
+import { LucideProps, MessageSquare, User, Rocket, LogOut } from "lucide-react";
 
 export const Icons = {
+  logOut: LogOut,
   user: User,
-
+  logo: Rocket,
   microsoft: (props: LucideProps) => (
     <svg {...props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
       <rect fill="#FDB813" width="380" height="380" />
