@@ -51,8 +51,8 @@ export function LinkTable<TData, TValue>({
       <div className="w-full">
         <h1 className="text-4xl text-left">
           Link collection{" "}
-          <span className="text-sm font-semibold text-gray-500">
-            (Click on a row to open it)
+          <span className="text-sm font-semibold">
+            (Click on a row to open the link)
           </span>
         </h1>
       </div>
@@ -61,11 +61,11 @@ export function LinkTable<TData, TValue>({
         placeholder="Search by category or description..."
         value={globalFilter ?? ""}
         onChange={(event) => table.setGlobalFilter(event.currentTarget.value)}
-        className="shadow-sm h-12"
+        className=" shadow-md h-12 border "
       />
 
       {/* Table  */}
-      <div className="rounded-md border bg-white shadow-sm w-full">
+      <div className="rounded-md border shadow-md w-full">
         <Table className=" ">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -117,9 +117,11 @@ export function LinkTable<TData, TValue>({
       </div>
 
       {/* Table footer pagination */}
-      <div className="flex justify-between items-center w-full rounded-md border bg-white shadow-sm px-4 py-2">
+      <div className="flex justify-between items-center w-full rounded-md border shadow-md px-4 py-2">
         {/* Total links */}
-        <p className="text-sm font-semibold">Total links: {data.length}</p>
+        <p className="text-sm font-semibold">
+          Total links: {table.getFilteredRowModel().rows.length}
+        </p>
 
         {/* Pagination buttons */}
         <div className=" space-x-2">
