@@ -10,6 +10,12 @@ export const authOptions: NextAuthOptions = {
       tenantId: process.env.AZURE_AD_TENANT_ID,
     }),
   ],
+  callbacks: {
+    redirect() {
+      return "/login";
+    },
+  },
+
   secret: process.env.SECRET,
   session: {
     strategy: "jwt",
