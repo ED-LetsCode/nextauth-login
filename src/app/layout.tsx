@@ -1,4 +1,7 @@
 import Navbar from "@/components/Navbar";
+import Provider from "@/components/Provider";
+import ThemeProvider from "@/components/theme/ThemeProvider";
+import { Toaster } from "@/components/ui/Toaster";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Inter } from "next/font/google";
@@ -17,9 +20,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-slate-50 ${cn(inter.className)}`}>
-        <Navbar />
-        <div className="container h-[90vh]">{children}</div>
+      <body className={` ${cn(inter.className)}`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {/* Session provider */}
+          <Provider>
+            <Navbar />
+            <div className="container h-[90vh] ">{children}</div>
+          </Provider>
+        </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
