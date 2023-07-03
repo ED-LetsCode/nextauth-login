@@ -16,13 +16,26 @@ import { useSession, signOut } from "next-auth/react";
 const UserProfile = () => {
   const { data: session } = useSession();
 
+  const getUserInitials = (name: string): string => {
+    const nameParts = name.split(" ");
+    // If there is only one name, return the first letter
+    if (nameParts.length === 1) return nameParts[0].charAt(0);
+    console.log(nameParts);
+    // If there are only two names, return the first letter of each
+    // Azure AD returns the last name first, so we need to reverse the order
+    // Example name: "Smith John" => "JS"
+    return nameParts[1].charAt(0) + nameParts[0].charAt(0);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-10 w-10  ">
             <AvatarImage src={session?.user?.image || ""} alt="" />
-            <AvatarFallback>{session?.user?.name?.charAt(0)}</AvatarFallback>
+            <AvatarFallback>
+              {getUserInitials(session?.user?.name || "")}
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
